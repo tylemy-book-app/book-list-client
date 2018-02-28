@@ -3,25 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Best Books</title>
+  <title>Tylemy's Book Club</title>
 
+  <!-- Style sheets-->
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/icons.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <!-- <link rel="stylesheet" href="styles/header.css"> -->
+  <link rel="stylesheet" href="styles/modules/book-main.css">
+  <link rel="stylesheet" href="styles/modules/detail-main.css">
+  <link rel="stylesheet" href="styles/modules/error.css">
+  <link rel="stylesheet" href="styles/modules/form-main.css">
+  <link rel="stylesheet" href="styles/modules/footer.css">
+
+  <!-- HANDLEBARS SECTION-->
+  
+  <!-- Error Handlebars -->
   <script type="text/x-handlebars-template" id="error-template">
     <p>{{status}}: {{statusText}}</p>
   </script>
+
+  <!-- Homepage handlebars -->
   <script type="text/x-handlebars-template" id="book-list-template">
-    <ul class="book-item">
-      <li><img src="{{image_url}}"></li>
-      <li>Title: {{title}}</li>
-      <li>Author: {{author}}</li>
+    <ul>
+      <li id= "book-header"><strong>{{title}}</strong><em> by {{author}}</em></li>
+      <br>
+      <li id="bookcover-home"><img src="{{image_url}}"></li>
+      <!-- <li>Author: {{author}}</li> -->
     </ul>
   </script>
+
+  <!--Details handlebars -->
+  <script type="text/x-handlebars-template" id="detail-view-template">
+    <img id= "bookcover" src="{{image_url}}">
+    <h2>Title: {{title}}</h2>
+    <h3>Author: {{author}}</h3>
+    <p>ISBN: {{isbn}}</p>
+    <p>Synopsis: {{description}}</p>
+  </script>
+  
+  <!--
   <script type="text/x-handlebars-template" id="error-template">
     <p>Number of total books: {{numBooks}}</p>
-  </script>
+  </script> -->
 </head>
+
 <body>
+  <div id="body-background">
   <header>
-    <h1>Best Books</h1>
+    <h1><em>Tylemy's Book Club</em></h1>
   </header>
 
   <main>
@@ -32,6 +64,22 @@
       <section class="book-view container">
         <h3>List of Books</h3>
         <div id="book-list"></div>
+      </section>
+
+      <section class="detail-view container">
+        <div id="one-book"></div>
+      </section>
+
+      <section class="add-new container">
+        <h2>Add a New Book</h2>
+        <form id="new-book-form">
+            <input type="text" name="title" placeholder="Book Title">
+            <input type="text" name="author" placeholder="Author">
+            <input type="text" name="isbn" placeholder="ISBN">
+            <input type="text" name="imageUrl" placeholder="Image URL">
+            <textarea name="description" placeholder="Synopsis" cols="30" rows="10"></textarea>
+            <button type="submit">Add This Book</button>
+        </form>
       </section>
 
     <aside>
@@ -50,9 +98,11 @@
     </ul>
   </footer>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="scripts/models/book.js" type="text/javascript"></script>
   <script src="scripts/views/error-view.js" type="text/javascript"></script>
   <script src="scripts/views/book-view.js" type="text/javascript"></script>
+  </div>
 </body>
 </html>
