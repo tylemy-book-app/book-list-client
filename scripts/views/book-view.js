@@ -13,6 +13,22 @@ var app = app || {};
     $('#numberOfBooks').text('Number of total books: ' + app.Book.all.length);
   };
 
+  bookView.initAddForm = function () {
+    console.log ('hi from initAddForm');
+    $('.container').hide();
+    $('.add-new').show();
+    $('.add-new').on('submit', function(event) {
+      event.preventDefault();
+      let book = {
+        title = event.target.title.value,
+        author = event.target.author.value,
+        isbn = event.target.isbn.value,
+        image_url = event.target.image_url.value,
+        description = event.target.description.value,
+      }
+      module.Book.createBook(book);
+    })
+  }
   module.bookView = bookView;
 })(app);
 

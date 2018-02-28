@@ -1,8 +1,8 @@
 'use strict';
 
 var app = app || {}; //change
-// var __API_URL__ = 'http://localhost:3000';
-var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
+var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
 (function (module) {
   function errorCallback(err) {
@@ -30,6 +30,11 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll) // this is an implicit way of invoking Book.loadAll with the resutl of the $.get request
       .then(callback)
+      .catch(errorCallback);
+
+  Book.createBook = book =>
+    $.post(`${__API_URL__}/api/v1/books`, book)
+      .then(() => page('/api/v1'))
       .catch(errorCallback);
 
   module.Book = Book;
