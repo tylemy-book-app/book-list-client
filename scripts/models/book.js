@@ -20,7 +20,7 @@ var __API_URL__ = 'http://localhost:3000';
   };
 
   Book.all = [];
-  
+
 
   Book.loadAll = rows => {
     Book.all = rows.sort((a, b) => a.title - b.title).map(book => new Book(book));
@@ -28,13 +28,13 @@ var __API_URL__ = 'http://localhost:3000';
 
   Book.fetchAll = callback =>
     $.get(`${__API_URL__}/api/v1/books`)
-      .then(Book.loadAll) // this is an implicit way of invoking Book.loadAll with the resutl of the $.get request
+      .then(Book.loadAll)
       .then(callback)
       .catch(errorCallback);
 
   Book.createBook = book =>
     $.post(`${__API_URL__}/api/v1/books`, book)
-      .then(() => page('/api/v1'))
+      .then(() => page('/'))
       .catch(errorCallback);
 
   module.Book = Book;
