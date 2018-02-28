@@ -9,6 +9,7 @@ var app = app || {};
     console.log ('hi from initIndexPage');
     $('.container').hide();
     $('.book-view').show();
+    $('#book-list').empty();
     app.Book.all.map(book => $('#book-list').append(book.toHtml()));
     $('#numberOfBooks').text('Number of total books: ' + app.Book.all.length);
   };
