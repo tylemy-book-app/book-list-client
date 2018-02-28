@@ -1,6 +1,6 @@
 'use strict';
 
-var app = {};
+var app = app || {}; //change
 // var __API_URL__ = 'http://localhost:3000';
 var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
@@ -28,7 +28,7 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
   Book.fetchAll = callback =>
     $.get(`${__API_URL__}/api/v1/books`)
-      .then(Book.loadAll)
+      .then(Book.loadAll) // this is an implicit way of invoking Book.loadAll with the resutl of the $.get request
       .then(callback)
       .catch(errorCallback);
 
