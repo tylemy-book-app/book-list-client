@@ -1,8 +1,8 @@
 'use strict';
 
 var app = app || {}; //change
-// var __API_URL__ = 'http://localhost:3000';
-var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
+var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
 (function (module) {
   function errorCallback(err) {
@@ -42,14 +42,13 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
       .then(() => page('/'))
       .catch(errorCallback);
 
-  Book.deleteBook = function() {
+  Book.deleteBook = function(id) {
     $.ajax({
-      url:`${__API_URL__}/api/v1/books/:id`,
+      url:`${__API_URL__}/api/v1/books/${id}`,
       method:'DELETE'
     })
       .then(() => page('/'))
       .catch(errorCallback);
   };
-
   module.Book = Book;
 })(app);
