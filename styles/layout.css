@@ -9,17 +9,22 @@ header {
 header h1{
   width: 100%;
   text-align: left;
-  font-size: 35px;
+  font-size: 40px;
   padding-left: 30px;
   font-family: 'Kaushan Script', cursive;
+  background: -webkit-linear-gradient(#eee, rgb(54, 221, 166));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 0;
 }
 
 .hamburger {
   background-color: orange;
-  color: white;
+  -webkit-text-fill-color: white;
   border: none;
   font-size: 35px;
   float: right;
+  z-index: 1;
 }
 
 .hamburger:hover, .hamburger:focus {
