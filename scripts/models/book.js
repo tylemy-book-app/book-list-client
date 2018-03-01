@@ -42,5 +42,14 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
       .then(() => page('/'))
       .catch(errorCallback);
 
+  Book.deleteBook = function() {
+    $.ajax({
+      url:`${__API_URL__}/api/v1/books/:id`,
+      method:'DELETE'
+    })
+      .then(() => page('/'))
+      .catch(errorCallback);
+  };
+
   module.Book = Book;
 })(app);

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/icons.css">
   <link rel="stylesheet" href="styles/layout.css">
-  <!-- <link rel="stylesheet" href="styles/header.css"> -->
+  <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/modules/book-main.css">
   <link rel="stylesheet" href="styles/modules/detail-main.css">
   <link rel="stylesheet" href="styles/modules/error.css">
@@ -45,6 +45,8 @@
     <h3>Author: {{author}}</h3>
     <p>ISBN: {{isbn}}</p>
     <p>Synopsis: {{description}}</p>
+    <button id="update" data-id={{book_id}}>Update</button>
+    <button id="delete" data-id={{book_id}}>Delete</button>
   </script>
   
   <!--
