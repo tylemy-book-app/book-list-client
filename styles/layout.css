@@ -3,6 +3,7 @@ header {
   width: 100%;
   border-top: 3px solid orange;
   border-bottom: 6px solid orange;
+  background-color: orange;
 }
 
 header h1{
@@ -11,4 +12,24 @@ header h1{
   font-size: 35px;
   padding-left: 30px;
   font-family: 'Kaushan Script', cursive;
+}
+
+.hamburger {
+  background-color: orange;
+  color: white;
+  border: none;
+  font-size: 35px;
+  float: right;
+}
+
+.hamburger:hover, .hamburger:focus {
+  background-color: rgb(152, 253, 219);
+}
+
+.nav-links {
+  width: 100%;
+  top:0;
+  padding: none;
+  text-align: center;
+  border: 1px solid black;
 }
