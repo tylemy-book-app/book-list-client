@@ -43,7 +43,17 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
       .catch(errorCallback);
 
   Book.update = (ctx, callback) =>
-    $.put(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      method: 'PUT',
+      data: {
+        title: this.title,
+        author: this.author,
+        isbn: this.isbn,
+        image_url: this.image_url,
+        description: this.description
+      }
+    })
       .then(() => page('/'))
       .then(callback)
       .catch(errorCallback);
