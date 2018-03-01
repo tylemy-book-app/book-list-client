@@ -5,18 +5,29 @@ var app = app || {};
 (function (module){
   const bookView = {};
 
-  bookView.initIndexPage = function () {
-    console.log ('hi from initIndexPage');
+  function reset() {
     $('.container').hide();
+    $('.navigation').slideDown(350);
+  }
+
+  bookView.initIndexPage = function () {
+    reset();
     $('.book-view').show();
     $('#book-list').empty();
     app.Book.all.map(book => $('#book-list').append(book.toHtml()));
     $('#numberOfBooks').text('Number of total books: ' + app.Book.all.length);
   };
 
+  bookView.initDetailPage = function (ctxBook) {
+    reset();
+    $('.detail-view').show();
+    $('#one-book').empty();
+    let template = Handlebars.compile($('#detail-view-template').text());
+    $('#one-book').append(template(ctxBook));
+  }
+
   bookView.initAddForm = function () {
-    console.log ('hi from initAddForm');
-    $('.container').hide();
+    reset();
     $('.add-new').show();
     $('#new-book-form').on('submit', function(event) {
       event.preventDefault();

@@ -1,8 +1,8 @@
 'use strict';
 
 var app = app || {}; //change
-// var __API_URL__ = 'http://localhost:3000';
-var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
+var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
 (function (module) {
   function errorCallback(err) {
@@ -21,7 +21,6 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
   Book.all = [];
 
-
   Book.loadAll = rows => {
     Book.all = rows.sort((a, b) => a.title - b.title).map(book => new Book(book));
   };
@@ -29,6 +28,12 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
   Book.fetchAll = callback =>
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
+      .then(callback)
+      .catch(errorCallback);
+
+  Book.fetchOne = (ctx, callback) =>
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
+      .then(results => ctx.book = results[0])
       .then(callback)
       .catch(errorCallback);
 

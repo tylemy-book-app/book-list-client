@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tylemy's Book Club</title>
 
+  <link rel="icon" type="image/png" href="styles/books-icon.png"/>
   <!-- Style sheets-->
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   <link rel="stylesheet" href="styles/normalize.css">
@@ -28,10 +29,12 @@
   <!-- Homepage handlebars -->
   <script type="text/x-handlebars-template" id="book-list-template">
     <ul>
+      <div data-bookid={{book_id}}>
       <li id= "book-header"><strong>{{title}}</strong><em> by {{author}}</em></li>
       <br>
       <li id="bookcover-home"><img src="{{image_url}}"></li>
       <li><a href="/books/{{book_id}}">View more</a></li>
+    </div>
     </ul>
   </script>
 
@@ -53,16 +56,10 @@
 <body>
   <div id="body-background">
   <header>
-    <h1><em>Tylemy's Book Club</em></h1>
+    <h1>Tylemy's Book Club<button class="hamburger">&#9776;</button></h1>
     <nav class="navigation">
-        <ul>
-          <li>
-            <a href="/">My books</a>
-          </li>
-          <li>
-            <a href="/books/add">Add books</a>
-          </li>
-        </ul>
+            <a class="nav-links" href="/">My books</a>
+            <a class="nav-links" href="/books/add">Add books</a>
       </nav>
   </header>
 
