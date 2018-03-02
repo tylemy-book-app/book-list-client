@@ -1,8 +1,8 @@
 'use strict';
 
 var app = app || {}; //change
-// var __API_URL__ = 'http://localhost:3000';
-var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
+var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
 (function (module) {
   function errorCallback(err) {
@@ -44,14 +44,14 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
   Book.update = (ctx, callback) =>
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
       method: 'PUT',
       data: {
-        title: this.title,
-        author: this.author,
-        isbn: this.isbn,
-        image_url: this.image_url,
-        description: this.description
+        title: ctx.title,
+        author: ctx.author,
+        isbn: ctx.isbn,
+        image_url: ctx.image_url,
+        description: ctx.description
       }
     })
       .then(() => page('/'))
