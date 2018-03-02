@@ -1,8 +1,8 @@
 'use strict';
 
 var app = app || {}; //change
-// var __API_URL__ = 'http://localhost:3000';
-var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
+var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
 (function (module) {
   function errorCallback(err) {
@@ -41,6 +41,34 @@ var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
     $.post(`${__API_URL__}/api/v1/books`, book)
       .then(() => page('/'))
       .catch(errorCallback);
+
+
+  Book.update = (ctx, book) =>
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books`,
+      method: 'PUT',
+      data: {
+        title: book.title,
+        author: book.author,
+        isbn: book.isbn,
+        image_url: book.image_url,
+        description: book.description,
+        book_id: book.book_id
+      }
+    })
+      .then(() => page('/'))
+      // .then(callback)
+      .catch(errorCallback);
+
+
+  Book.deleteBook = function(id) {
+    $.ajax({
+      url:`${__API_URL__}/api/v1/books/${id}`,
+      method:'DELETE'
+    })
+      .then(() => page('/'))
+      .catch(errorCallback);
+  };
 
   module.Book = Book;
 })(app);
