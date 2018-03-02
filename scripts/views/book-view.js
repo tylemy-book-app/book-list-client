@@ -24,7 +24,19 @@ var app = app || {};
     $('#one-book').empty();
     let template = Handlebars.compile($('#detail-view-template').text());
     $('#one-book').append(template(ctxBook));
+
+    console.log(ctxBook);
+    $('#delete').on('click',
+      function(event) {
+        event.preventDefault();
+        app.Book.deleteBook(ctxBook.book_id);
+        
+      });
   }
+
+  bookView.deleteOneBook = () => {
+    
+  };
 
   bookView.initAddForm = function () {
     reset();
