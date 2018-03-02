@@ -10,4 +10,7 @@ page('/books/:book_id', ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPag
 // page('/books/:book_id/update', ctx => app.Book.fetchOne(ctx, app.bookView.initUpdateFormPage(ctx)));
 page('/books/:book_id/update', (ctx, next) => app.Book.fetchOne(ctx, next), (ctx) => app.bookView.initUpdateFormPage(ctx));
 
+
+page('/admin', (ctx, next) => app.adminView.initAdminPage(ctx, next), (ctx) => app.adminView.verify);
+
 page();
