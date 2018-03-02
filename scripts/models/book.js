@@ -43,20 +43,21 @@ var __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
 
 
-  Book.update = (ctx, callback) =>
+  Book.update = (ctx, book) =>
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+      url: `${__API_URL__}/api/v1/books`,
       method: 'PUT',
       data: {
-        title: ctx.title,
-        author: ctx.author,
-        isbn: ctx.isbn,
-        image_url: ctx.image_url,
-        description: ctx.description
+        title: book.title,
+        author: book.author,
+        isbn: book.isbn,
+        image_url: book.image_url,
+        description: book.description,
+        book_id: book.book_id
       }
     })
       .then(() => page('/'))
-      .then(callback)
+      // .then(callback)
       .catch(errorCallback);
 
 
