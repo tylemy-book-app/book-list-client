@@ -45,12 +45,24 @@
     <h3>Author: {{author}}</h3>
     <p>ISBN: {{isbn}}</p>
     <p>Synopsis: {{description}}</p>
+
+    <a id="update" href="/books/{{book_id}}/update" data-id={{book_id}}>Update</a>
+    <button id="delete" data-id={{book_id}}>Delete</button>
+
   </script>
-  
-  <!--
-  <script type="text/x-handlebars-template" id="error-template">
-    <p>Number of total books: {{numBooks}}</p>
-  </script> -->
+
+  <!-- Update Record handlebars -->
+  <script type="text/x-handlebars-template" id="update-record-template">
+    <form id="update-record-form">
+        <input type="text" name="title" value="{{title}}">
+        <input type="text" name="author" value="{{author}}">
+        <input type="text" name="isbn" value="{{isbn}}">
+        <input type="text" name="image_url" value="{{image_url}}">
+        <textarea name="description" cols="30" rows="10" value="{{description}}">{{description}}</textarea>
+        <button type="submit">Update Record</button>
+    </form>
+  </script>
+
 </head>
 
 <body>
@@ -87,6 +99,11 @@
             <textarea name="description" placeholder="Synopsis" cols="30" rows="10"></textarea>
             <button type="submit">Add This Book</button>
         </form>
+      </section>
+
+      <section class="update-record container">
+        <h2>Update Book Info</h2>
+        <div id="one-update-form"></div>
       </section>
 
     <aside>
