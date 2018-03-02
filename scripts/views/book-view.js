@@ -18,21 +18,22 @@ var app = app || {};
     $('#numberOfBooks').text('Number of total books: ' + app.Book.all.length);
   };
 
-  bookView.initDetailPage = function (ctxBook) {
+  bookView.initDetailPage = function (ctx) {
     reset();
     $('.detail-view').show();
     $('#one-book').empty();
     let template = Handlebars.compile($('#detail-view-template').text());
-    $('#one-book').append(template(ctxBook));
+    $('#one-book').append(template(ctx));
 
-    console.log(ctxBook);
+    console.log(ctx);
+  
     $('#delete').on('click',
       function(event) {
         event.preventDefault();
-        app.Book.deleteBook(ctxBook.book_id);
-        
+        app.Book.deleteBook(ctx.book_id);
       });
   }
+
 
   bookView.deleteOneBook = () => {
     
@@ -53,6 +54,30 @@ var app = app || {};
       module.Book.createBook(book);
     });
   };
+
+  bookView.initUpdateFormPage = function(ctx) {
+    console.log(ctx);
+    console.log(ctx.book);
+    // console.log(ctx.book.book_id);
+    reset();
+    $('.update-record').show();
+    $('#one-update-form').empty();
+    let template = Handlebars.compile($('#update-record-template').text());
+    $('#one-update-form').append(template(ctx.book));
+    $('#update-record-form').on('submit', function(event) {
+      event.preventDefault();
+      let book = {
+        title: event.target.title.value,
+        author: event.target.author.value,
+        isbn: event.target.isbn.value,
+        image_url: event.target.image_url.value,
+        description: event.target.description.value,
+        book_id: ctx.book.book_id
+      };
+      module.Book.update(book);
+    });
+  };
+
   module.bookView = bookView;
 })(app);
 
