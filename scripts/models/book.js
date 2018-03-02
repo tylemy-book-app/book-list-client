@@ -42,7 +42,6 @@ var __API_URL__ = 'http://localhost:3000';
       .then(() => page('/'))
       .catch(errorCallback);
 
-
   Book.update = (ctx, book) =>
     $.ajax({
       url: `${__API_URL__}/api/v1/books`,

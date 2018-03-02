@@ -25,6 +25,8 @@ var app = app || {};
     let template = Handlebars.compile($('#detail-view-template').text());
     $('#one-book').append(template(ctx));
 
+    localStorage.adminRights && JSON.parse(localStorage.adminRights) === true ? $('.admin-buttons').show() : $('.admin-buttons').hide();
+
     console.log(ctx);
   
     $('#delete').on('click',
@@ -32,12 +34,8 @@ var app = app || {};
         event.preventDefault();
         app.Book.deleteBook(ctx.book_id);
       });
-  }
-
-
-  bookView.deleteOneBook = () => {
-    
   };
+
 
   bookView.initAddForm = function () {
     reset();
