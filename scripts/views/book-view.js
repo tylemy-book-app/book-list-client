@@ -25,6 +25,8 @@ var app = app || {};
     let template = Handlebars.compile($('#detail-view-template').text());
     $('#one-book').append(template(ctx));
 
+    localStorage.adminRights && JSON.parse(localStorage.adminRights) === true ? $('.admin-buttons').show() : $('.admin-buttons').hide();
+
     console.log(ctx);
   
     $('#delete').on('click',
@@ -32,12 +34,8 @@ var app = app || {};
         event.preventDefault();
         app.Book.deleteBook(ctx.book_id);
       });
-  }
-
-
-  bookView.deleteOneBook = () => {
-    
   };
+
 
   bookView.initAddForm = function () {
     reset();
@@ -57,7 +55,7 @@ var app = app || {};
 
   bookView.initUpdateFormPage = function(ctx) {
     console.log(ctx);
-    console.log(ctx.book);
+    // console.log(ctx.book);
     // console.log(ctx.book.book_id);
     reset();
     $('.update-record').show();
@@ -72,9 +70,11 @@ var app = app || {};
         isbn: event.target.isbn.value,
         image_url: event.target.image_url.value,
         description: event.target.description.value,
-        book_id: ctx.book.book_id
+        book_id: ctx.params.book_id
       };
-      module.Book.update(book);
+      // console.log(book);
+      // console.log(ctx);
+      module.Book.update(ctx, book);
     });
   };
 
