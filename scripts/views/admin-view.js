@@ -1,8 +1,8 @@
 'use strict';
 
 var app = app || {};
-var __API_URL__ = 'http://localhost:3000';
-// var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
+// var __API_URL__ = 'http://localhost:3000';
+var __API_URL__ = 'https://tf-jc-booklist.herokuapp.com';
 
 (function (module){
   const adminView = {};
@@ -34,22 +34,9 @@ var __API_URL__ = 'http://localhost:3000';
             alert('Stop trying to steal our stuff');
             page('/');
           }
-    //     //   localStorage.tokenVerified = true;
-    //     //   page('/wherever')
-    //     // else do a different thing
-    //     //   localStorage.tokenVerified = false;
-    //     //   page('/somewhereElse')
-    //     // })
-    //     .catch(err)
-
+        });
     });
-    // next();
-  });
-  }
-  // adminView.login(function(ctx) {
-  //   // if localStorage.token do something
-  //   // else do another thing
-  // });
+  };
 
   module.adminView = adminView;
 })(app);
