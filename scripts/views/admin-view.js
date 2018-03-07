@@ -10,6 +10,7 @@ var __API_URL__ = 'http://localhost:3000';
   function reset() {
     $('.container').hide();
     $('.navigation').slideDown(350);
+    $('#admin-form').off();
   }
 
   adminView.initAdminPage = function() {

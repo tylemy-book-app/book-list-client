@@ -12,5 +12,5 @@ body {
 #body-background {
   width: 100%;
   background: -webkit-linear-gradient(rgb(188, 243, 236), rgb(54, 221, 166));
-  border: 3px solid orange;
+  border: 5px ridge rgb(253, 142, 14);
 }

@@ -1,8 +1,8 @@
 
 header {
   width: 100%;
-  border-top: 3px solid orange;
-  border-bottom: 6px solid orange;
+  border-top: 1px solid rgb(253, 142, 14);
+  border-bottom: 6px solid rgb(253, 142, 14);
   background-color: orange;
 }
 
@@ -24,6 +24,7 @@ header h1{
   border: none;
   font-size: 35px;
   float: right;
+  margin: 5px 20px 0 0;
   z-index: 1;
 }
 
@@ -36,5 +37,5 @@ header h1{
   top:0;
   padding: none;
   text-align: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }

@@ -32,8 +32,8 @@ ul li {
   width: 100%;
   margin: auto;
   background-color: white;
-  border-top: 3px solid orange;
-  border-bottom: 3px solid orange;
+  border-top: 3px solid rgb(253, 142, 14);
+  border-bottom: 3px solid rgb(253, 142, 14);
 }
 
 #bookcover-home{
